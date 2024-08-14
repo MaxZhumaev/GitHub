@@ -1,6 +1,8 @@
 immutable_var = (5, "max", True, [1, 2])
 print(immutable_var)
 print(immutable_var[0:2])
+#попытка изменить элемент списка
+#immutable_var[2] = 'Lena'
 #изменяю элемент списка, входящий в кортеж
 print(immutable_var[3][1])
 immutable_var[3][1] = 3

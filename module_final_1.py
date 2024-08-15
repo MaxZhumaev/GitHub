@@ -10,5 +10,9 @@ students = {'Johnny', 'Bilbo', 'Steve', 'Khendrik', 'Aaron'}
 #сортировка по алфавиту
 students = list(students) #перевод в изменяемый формат
 students.sort() #сортировка по алфавиту
-list_students = {tuple(students): grades} #список, ключи как кортеж
+list_students = {tuple(students[0]): grades[0],
+                 tuple(students[1]): grades[1],
+                 tuple(students[2]): grades[2],
+                 tuple(students[3]): grades[3],
+                 tuple(students[4]): grades[4]}
 print({tuple(students): grades})

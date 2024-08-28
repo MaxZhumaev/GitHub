@@ -4,6 +4,7 @@ def calculate_structure_sum(data):
     is_string = 0
     is_bool = 0
     is_number = 0
+    sum_all = 0
     structure = list(data)
     print(structure)
     # сложная многократносложенная структура напоминает ветки дерева
@@ -14,6 +15,7 @@ def calculate_structure_sum(data):
         # лист в форме строки
         if type(structure[i]) == str:
             is_string += 1
+            sum_all += len(structure[i])
             structure.pop(i)
             i -= 1
         # лист в форме Булевые данные
@@ -24,6 +26,7 @@ def calculate_structure_sum(data):
         # лист в форме числа
         elif type(structure[i]) == int or type(structure[i]) == float:
             is_number += 1
+            sum_all += structure[i]
             structure.pop(i)
             i -= 1
         # ветка в форме списка
@@ -49,6 +52,7 @@ def calculate_structure_sum(data):
         i += 1
     print(structure)
     print(f'строк: {is_string}, Булевых: {is_bool}, чисел: {is_number}')
+    print(f'сумма всех элементов: {sum_all}')
 
     return structure
 

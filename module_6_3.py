@@ -1,0 +1,51 @@
+# 2023/11/09 00:00|Домашнее задание по теме "Множественное наследование"
+# Задача "Мифическое наследование"
+
+# Horse - класс описывающий лошадь
+class Hourse:
+    def __init__(self):
+        super().__init__()
+        self.x_distance = 0
+        self.sound = 'Frrr'
+
+    def run(self, dx):
+        self.x_distance += dx
+
+# Eagle - класс описывающий орла
+class Eagle:
+    def __init__(self):
+        self.y_distance = 0
+        self.sound =  'I train, eat, sleep, and repeat'
+
+    def fly(self, dy):
+        self.y_distance += dy
+
+# Pegasus - класс описывающий пегаса
+class Pegasus(Hourse, Eagle):
+    def __init__(self):
+        super().__init__()
+
+    def move(self, dx, dy):
+        self.run(dx)
+        self.fly(dy)
+
+    def get_pos(self):
+        return (self.x_distance, self.y_distance)
+
+    def voice(self):
+        return print(self.sound)
+
+p1 = Pegasus()
+print(Hourse.mro())
+print(Eagle.mro())
+print(Pegasus.mro())
+
+print(p1.get_pos())
+p1.move(10, 15)
+
+print(p1.get_pos())
+p1.move(-5, 20)
+
+print(p1.get_pos())
+
+p1.voice()

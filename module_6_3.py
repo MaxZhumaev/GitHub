@@ -4,7 +4,6 @@
 # Horse - класс описывающий лошадь
 class Hourse:
     def __init__(self):
-        super().__init__()
         self.x_distance = 0
         self.sound = 'Frrr'
 
@@ -23,7 +22,8 @@ class Eagle:
 # Pegasus - класс описывающий пегаса
 class Pegasus(Hourse, Eagle):
     def __init__(self):
-        super().__init__()
+        Hourse.__init__(self)
+        Eagle.__init__(self)
 
     def move(self, dx, dy):
         self.run(dx)
@@ -36,8 +36,6 @@ class Pegasus(Hourse, Eagle):
         return print(self.sound)
 
 p1 = Pegasus()
-print(Hourse.mro())
-print(Eagle.mro())
 print(Pegasus.mro())
 
 print(p1.get_pos())

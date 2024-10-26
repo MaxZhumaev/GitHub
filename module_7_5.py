@@ -12,13 +12,24 @@
 # Используйте os.path.dirname для получения родительской директории файла.
 # Импорт нужных функций
 import os, time
-
 # директория проекта
 directory = "."
 # начинаем обход файловой системы из пути directory
 for root, dirs, files in os.walk(directory):
     for file in files:
-        print(f'Обнаружен файл: {os.path.basename(file)}, Путь: {os.getcwd()}, '
-                f'Размер: {os.path.getsize(file)} байт, '
-                f'Время изменения: {time.strftime("%d.%m.%Y %H:%M", time.localtime(os.path.getmtime(file)))}, '
-                f'Родительская директория: {os.path.dirname(os.getcwd())}')
+        filepath = os.path.abspath(file)
+        filetime = os.path.getmtime(filepath)
+        formatted_time = time.strftime("%d.%m.%Y %H:%M", time.localtime(filetime))
+        filesize = os.path.getsize(filepath)
+        parent_dir = os.path.dirname(filepath)
+        print(
+            f'Обнаружен файл: {file}, '
+            f'Путь: {filepath}, '
+            f'Размер: {filesize} байт, '
+            f'Время изменения: {formatted_time}, '
+            f'Родительская директория: {parent_dir}')
+
+                #print(f'Обнаружен файл: {os.path.basename(file)}, Путь: {os.getcwd()}, '
+        #        f'Размер: {os.path.getsize(file)} байт, '
+        #        f'Время изменения: {time.strftime("%d.%m.%Y %H:%M", time.localtime(os.path.getmtime(file)))}, '
+        #        f'Родительская директория: {os.path.dirname(os.getcwd())}')
